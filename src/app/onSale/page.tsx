@@ -1,0 +1,146 @@
+import {
+  getProducts,
+  getProductsItemsLength,
+  getSaleProducts,
+  getSaleProductsItemsLength,
+} from "../../../sanity/lib/client";
+import Card from "@/components/Card";
+import DropDownMenu from "@/components/products_page/DropDownMenu";
+import EmptySaleProducts from "@/components/sale_page/EmptySale";
+import { Button } from "@/components/ui/button";
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+type OrderBy =
+  | "featured"
+  | "bestSelling"
+  | "a-z"
+  | "z-a"
+  | "lowToHigh"
+  | "highToLow"
+  | "newToOld"
+  | "oldToNew";
+interface PageProps {
+  searchParams: {
+    page: number;
+    orderBy: OrderBy;
+  };
+}
+
+async function page({ searchParams }: PageProps) {
+  const totalItems = await getSaleProductsItemsLength();
+  if (!totalItems) {
+    return <EmptySaleProducts />;
+  }
+  const itemsPerPage = 8;
+  const pages = Math.ceil(totalItems / itemsPerPage);
+  const currentPage =
+    Number(searchParams.page ?? 1) <= pages
+      ? Number(searchParams.page ?? 1)
+      : 1;
+  const products = await getSaleProducts(
+    currentPage,
+    {
+      start: 0,
+      end: itemsPerPage,
+    },
+    searchParams.orderBy
+  );
+
+  console.log(searchParams.orderBy);
+  return (
+    <>
+      <div className="w-full relative h-52 mt-2 bg-[url('/bg.webp')] bg-cover bg-center text-white flex items-center justify-center">
+        <div
+          aria-disabled='true'
+          className=' absolute inset-0 w-full h-full bg-gray-800 opacity-50'
+        />
+        <h1 className='z-20 font-semibold text-xl'>
+          Shop through our latest Sale selection
+        </h1>
+      </div>
+      <section className='max-w-6xl mx-auto grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-12'>
+        <div className='my-4 col-span-full flex items-center justify-between gap-6 w-full'>
+          {/* <Button variant={"outline"}>Filter</Button> */}
+          <div aria-disabled='true'></div>
+          <div className='max-w-[280px]'>
+            <DropDownMenu
+              searchParams={searchParams}
+              currentPage={currentPage}
+            />
+          </div>
+        </div>
+        <p className='col-span-full text-xs text-muted-foreground capitalize'>
+          {" "}
+          total products : {totalItems}{" "}
+        </p>
+        {products.map((product) => (
+          <Card
+            images={product.product_images}
+            key={product._id + "product_Products"}
+            product_name={product.product_name}
+            price={product.price}
+            id={product._id}
+            onSale={product.onSale}
+            otherProps={product}
+          />
+        ))}
+        <div className='border-t border-solid border-gray-200 pt-12 mt-12 col-span-full'>
+          <Pagination>
+            <PaginationContent>
+              {currentPage > 1 && (
+                <PaginationItem>
+                  <PaginationPrevious
+                    href={`/products?page=${currentPage - 1}&orderBy=${
+                      searchParams.orderBy ?? "featured"
+                    }`}
+                  />
+                </PaginationItem>
+              )}
+
+              <PaginationItem>
+                <PaginationLink
+                  isActive
+                  href={`/products?page=${currentPage}&orderBy=${
+                    searchParams.orderBy ?? "featured"
+                  }`}
+                >
+                  {currentPage}
+                </PaginationLink>
+              </PaginationItem>
+              {currentPage + 1 <= pages && (
+                <PaginationItem>
+                  <PaginationLink
+                    href={`/products?page=${currentPage + 1}&orderBy=${
+                      searchParams.orderBy ?? "featured"
+                    }`}
+                  >
+                    {currentPage + 1}
+                  </PaginationLink>
+                </PaginationItem>
+              )}
+              {currentPage + 1 <= pages && (
+                <PaginationItem>
+                  <PaginationNext
+                    href={`/products?page=${currentPage + 1}&orderBy=${
+                      searchParams.orderBy ?? "featured"
+                    }`}
+                  />
+                </PaginationItem>
+              )}
+            </PaginationContent>
+          </Pagination>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export default page;
