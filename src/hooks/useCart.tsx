@@ -16,12 +16,17 @@ interface Actions {
   removeFromCart: (Item: ProductProps) => void;
   reduceItem: (Item: ProductProps) => void;
   clearAll: () => void;
+  updateLocalStoreage: () => void;
 }
 
+const getLocalData = JSON.parse(
+  window.localStorage.getItem("cartData") || "{}"
+);
+
 const INITIAL_STATE: StateProps = {
-  cart: [],
-  totalPrice: 0,
-  totalItems: 0,
+  cart: getLocalData.cart ?? [],
+  totalPrice: getLocalData.totalPrice ?? 0,
+  totalItems: getLocalData.totalItems ?? 0,
 };
 
 // Create the store with Zustand, combining the status interface and actions
@@ -62,11 +67,12 @@ export const useCartStore = create<StateProps & Actions>((set, get) => ({
             ? product.onSale.salePrice
             : product.price),
       }));
+
       toast.success("Added successfully");
+      get().updateLocalStoreage();
     }
   },
   removeFromCart: (product: ProductProps) => {
-    console.log(product);
     set((state) => ({
       ...state,
       cart: state.cart.filter((item) => item._id !== product._id),
@@ -78,6 +84,7 @@ export const useCartStore = create<StateProps & Actions>((set, get) => ({
           : product.price) *
           product.quantity,
     }));
+    get().updateLocalStoreage();
   },
   reduceItem: (meal: ProductProps) => {
     set((state) => {
@@ -120,7 +127,7 @@ export const useCartStore = create<StateProps & Actions>((set, get) => ({
                   : product.price),
         };
       }
-
+      get().updateLocalStoreage();
       return state;
     });
   },
@@ -130,5 +137,17 @@ export const useCartStore = create<StateProps & Actions>((set, get) => ({
       totalPrice: 0,
       totalItems: 0,
     }));
+    get().updateLocalStoreage();
+  },
+  updateLocalStoreage: () => {
+    const data = JSON.stringify({
+      cart: get().cart,
+      totalItems: get().totalItems,
+      totalPrice: get().totalPrice,
+    });
+    window.localStorage.setItem("cartData", data);
+  },
+  clearLocalStorage: () => {
+    window.localStorage.clear();
   },
 }));

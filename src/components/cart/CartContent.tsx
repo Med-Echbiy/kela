@@ -12,6 +12,8 @@ import {
 } from "../ui/carousel";
 import products from "../../../sanity/products";
 import { Button } from "../ui/button";
+import EmptyCart from "./EmptyCart";
+import { SheetClose } from "../ui/sheet";
 
 function CartContent() {
   const {
@@ -23,6 +25,9 @@ function CartContent() {
     addToCart,
     removeFromCart,
   } = useCartStore();
+  if (cart.length < 1) {
+    return <EmptyCart />;
+  }
   return (
     <div className='grid grid-cols-1 gapy-6 mt-12 cursor-grab'>
       <Carousel
@@ -64,7 +69,17 @@ function CartContent() {
                   {totalPrice}${" "}
                 </span>
               </p>
-              <Button className='bg-blue-500 mb-6'>Check Out</Button>
+              <Button className='bg-blue-500'>Check Out</Button>
+              <SheetClose>
+                {" "}
+                <Button
+                  variant={"ghost"}
+                  className=' mb-6'
+                  onClick={() => clearAll()}
+                >
+                  Clear All
+                </Button>
+              </SheetClose>
             </div>
           </CarouselItem>
         </CarouselContent>
