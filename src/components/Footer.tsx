@@ -7,6 +7,7 @@ import {
   Phone,
   Twitter,
 } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 function Footer() {
@@ -43,58 +44,38 @@ function Footer() {
           <div className='flex flex-col space-y-4'>
             <h2 className='font-semibold mb-4'>Categories</h2>
             <div className='flex flex-col space-y-2 text-sm text-muted-foreground gap-3'>
-              <a rel='noopener noreferrer' href='#'>
-                Messangers
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Travel & Luggage
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Backpack
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Laptop Bags
-              </a>
+              <Link href='/ctegories/messangers'>Messangers</Link>
+              <Link href='/ctegories/travel_luggage'>Travel & Luggage</Link>
+              <Link href='/ctegories/backpack'>Backpack</Link>
+              <Link href='/ctegories/laptop_bags'>Laptop Bags</Link>
             </div>
           </div>
           <div className='flex flex-col space-y-4'>
             <h2 className='font-semibold mb-4'>Infomation</h2>
             <div className='flex flex-col space-y-2 text-sm text-muted-foreground gap-3'>
-              <a rel='noopener noreferrer' href='#'>
-                About Us
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Contact Us
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Terms & Conditions
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Returns & Exchanges
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Shipping & Delivery
-              </a>
-              <a rel='noopener noreferrer' href='#'>
-                Privacy Policy
-              </a>
+              <Link href='/about_us'>About Us</Link>
+              <Link href='/contact_us'>Contact Us</Link>
+              <Link href='/terms_conditions'>Terms & Conditions</Link>
+              {/* <Link href='/return_exchanges'>Returns & Exchanges</Link> */}
+              {/* <Link href='/shipping_delivery'>Shipping & Delivery</Link> */}
+              {/* <Link href='/privacy_policy'>Privacy Policy</Link> */}
             </div>
           </div>
           {/* <div className='flex flex-col space-y-4'>
             <h2 className='font-semibold mb-4'>Useful links</h2>
             <div className='flex flex-col gap-3 space-y-2 text-sm text-muted-foreground'>
-              <a rel='noopener noreferrer' href='#'>
+              <Link  href='#'>
                 GitHub
-              </a>
-              <a rel='noopener noreferrer' href='#'>
+             </Link>
+              <Link  href='#'>
                 Discord
-              </a>
-              <a rel='noopener noreferrer' href='#'>
+             </Link>
+              <Link  href='#'>
                 Twitter
-              </a>
-              <a rel='noopener noreferrer' href='#'>
+             </Link>
+              <Link  href='#'>
                 YouTube
-              </a>
+             </Link>
             </div>
           </div> */}
         </div>

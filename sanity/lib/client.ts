@@ -201,3 +201,26 @@ export async function searchProudctsLengths(searchString: string) {
   );
   return numberOfItems;
 }
+
+export async function getAboutInfo() {
+  const data = await client.fetch(
+    `*[_type == 'about_us'][0]`,
+    {},
+    {
+      cache: "no-cache",
+      next: { revalidate: 1000 },
+    }
+  );
+  return data;
+}
+export async function getTermsConditions() {
+  const data = await client.fetch(
+    `*[_type == 'terms_conditions'][0]`,
+    {},
+    {
+      cache: "no-cache",
+      next: { revalidate: 1000 },
+    }
+  );
+  return data;
+}

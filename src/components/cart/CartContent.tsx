@@ -74,7 +74,7 @@ function CartContent() {
                 {" "}
                 <Button
                   variant={"ghost"}
-                  className=' mb-6'
+                  className=' mb-6 w-full'
                   onClick={() => clearAll()}
                 >
                   Clear All

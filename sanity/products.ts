@@ -115,27 +115,27 @@ const products = {
       },
     },
   ],
-  preview: {
-    select: {
-      title: "product_name",
-      subtitle: "price",
-      media: "product_images",
-    },
-    prepare({
-      title,
-      subtitle,
-      media,
-    }: {
-      title: string;
-      subtitle: string;
-      media: ImageAsset;
-    }) {
-      return {
-        title: `${title}`,
-        subtitle: `Price is: ${subtitle}$`,
-        media: media[0],
-      };
-    },
-  },
+  // preview: {
+  //   select: {
+  //     title: "product_name",
+  //     subtitle: "price",
+  //     media: "product_images",
+  //   },
+  //   prepare({
+  //     title,
+  //     subtitle,
+  //     media,
+  //   }: {
+  //     title: string;
+  //     subtitle: string;
+  //     media: ImageAsset;
+  //   }) {
+  //     return {
+  //       title: `${title}`,
+  //       subtitle: `Price is: ${subtitle}$`,
+  //       media: media[0],
+  //     };
+  //   },
+  // },
 };
 export default products;

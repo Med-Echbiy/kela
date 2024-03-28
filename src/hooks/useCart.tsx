@@ -1,3 +1,4 @@
+"use client";
 import { create } from "zustand";
 import toast from "react-hot-toast";
 import { Product, Product_Image } from "@/types";

@@ -18,8 +18,8 @@ function Nav() {
     router.push(`/search/${searchValue}`);
   }
   return (
-    <div className='sticky h-16 w-full inset-0 z-50'>
-      <nav className='w-full h-full flex bg-white items-center border-b border-solid border-gray-200 gap-7'>
+    <div className='sticky h-16 w-full inset-0 z-50 bg-white'>
+      <nav className='w-full h-full flex bg-white items-center border-b border-solid border-gray-200 gap-7 max-w-7xl mx-auto'>
         <Link href='/'>
           <div className='logo min-w-20'>
             <img src='/Logo.webp' alt='logo image with name Kalles' />
