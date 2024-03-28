@@ -14,13 +14,13 @@ function OurPartners() {
     "/19.webp",
   ];
   return (
-    <div className='grid xs:grid-cols-2 md:grid-cols-5 max-w-6xl mx-auto gap-4 items-center justify-center'>
+    <div className='grid xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-5 max-w-6xl mx-auto gap-4 items-center justify-center'>
       {images.map((e, i) => (
         <img
           src={e}
           key={e}
           alt={`partner ${i}`}
-          className='w-[85%] mx-auto p-4 object-contain animate-none hover:animate-pulse'
+          className='w-[85%] mx-auto p-4 object-contain animate-none hover:animate-pulse max-w-[150px]'
         />
       ))}
     </div>

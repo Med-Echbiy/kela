@@ -15,7 +15,7 @@ function Footer() {
     <>
       {/* <div className=' border-t border-solid border-gray-200 mb-12 mt-32'></div> */}
       <footer className='p-6 py-12  bg-gray-50 mt-12 lg:mt-24'>
-        <div className='container grid grid-cols-1 xs:grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3  justify-center '>
+        <div className='container grid grid-cols-1 sm:grid-cols-2 mx-auto gap-x-3 gap-y-8 md:grid-cols-3  justify-center '>
           <div className='flex flex-col space-y-4'>
             <div>
               <img src='/Logo.webp' alt='logo' className='mb-4' />

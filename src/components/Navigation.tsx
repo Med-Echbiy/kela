@@ -63,13 +63,13 @@ export function Navigation({ mobile }: { mobile?: boolean }) {
           {mobile && (
             <Collapsible>
               <CollapsibleTrigger onClick={() => setCollapsed((pre) => !pre)}>
-                <p className='flex items-center gap-4 px-4 my-2'>
+                <p className='flex items-center gap-4 px-4 mt-2 mb-3'>
                   <span>Categories</span>
                   {!collapsed ? <ArrowDown size={14} /> : <ArrowUp size={14} />}
                 </p>
               </CollapsibleTrigger>
               <CollapsibleContent>
-                <ul className='grid py-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] border-b border-solid border-gray-200 mb-2 text-sm'>
+                <ul className='grid list-disc pl-2 py-2 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr] border-b border-solid border-gray-200 mb-2 text-sm'>
                   <ListItem href='/categories/messangers' title='Messangers' />
 
                   <ListItem
