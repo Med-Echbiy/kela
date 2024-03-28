@@ -17,6 +17,7 @@ async function BestSeller() {
       <div className='grid xs:grid-cols-2 md:col-span-3 grid-cols-1 gap-4 items-center justify-center'>
         {products.slice(0, 4).map((e) => (
           <Card
+            otherProps={e}
             product_name={e.product_name}
             images={e.product_images}
             key={e._id + "yy"}

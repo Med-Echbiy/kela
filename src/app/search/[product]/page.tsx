@@ -86,6 +86,7 @@ async function page({ searchParams, params }: PageProps) {
         </p>
         {products.map((product) => (
           <Card
+            otherProps={product}
             images={product.product_images}
             key={product._id + "product_Products"}
             product_name={product.product_name}

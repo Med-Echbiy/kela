@@ -207,7 +207,7 @@ export async function getAboutInfo() {
     `*[_type == 'about_us'][0]`,
     {},
     {
-      cache: "no-cache",
+      // cache: "no-cache",
       next: { revalidate: 1000 },
     }
   );
@@ -218,7 +218,7 @@ export async function getTermsConditions() {
     `*[_type == 'terms_conditions'][0]`,
     {},
     {
-      cache: "no-cache",
+      // cache: "no-cache",
       next: { revalidate: 1000 },
     }
   );

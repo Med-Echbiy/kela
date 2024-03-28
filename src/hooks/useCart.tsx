@@ -20,9 +20,10 @@ interface Actions {
   updateLocalStoreage: () => void;
 }
 
-const getLocalData = JSON.parse(
-  window.localStorage.getItem("cartData") || "{}"
-);
+const getLocalData =
+  (typeof window !== "undefined" &&
+    JSON.parse(window.localStorage.getItem("cartData") || "{}")) ??
+  {};
 
 const INITIAL_STATE: StateProps = {
   cart: getLocalData.cart ?? [],

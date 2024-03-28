@@ -1,13 +1,13 @@
 // @ts-nocheck
 "use client";
-import Magnifier from "@/react-magnifier/src/Magnifier";
 import { urlForImage } from "../../../sanity/lib/image";
 import { Product_Image } from "@/types";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-
+import Magnifier from "./Magnifier";
 function ProductImages({ image }: { image: Product_Image[] }) {
   const [activeImage, setActiveImage] = useState(0);
+  console.log(image[activeImage]);
   return (
     <div className='flex flex-col-reverse gap-3 sm:flex-row min-w-[85%] md:min-w-[420px]'>
       {image.length > 1 && (
@@ -33,11 +33,7 @@ function ProductImages({ image }: { image: Product_Image[] }) {
           image.length <= 1 && "mx-auto"
         )}
       >
-        <Magnifier
-          src={`${urlForImage(image[activeImage])}`}
-          zoomFactor={2}
-          className=' '
-        />
+        <Magnifier src={image[activeImage]} />
       </div>
     </div>
   );

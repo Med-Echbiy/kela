@@ -31,6 +31,7 @@ async function EmptySearch({ searchString }: { searchString: string }) {
 
       {products.map((p, i) => (
         <Card
+          otherProps={p}
           key={p._id + i + "pro"}
           id={p._id}
           images={p.product_images}
