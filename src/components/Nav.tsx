@@ -56,15 +56,19 @@ function Nav() {
             <Cart />
           </div>
 
-          <Button className='notification-signUp-btn hidden  md:block'>
-            Sing-Up
-          </Button>
-          <Button
-            variant={"outline"}
-            className='notification-signUp-btn hidden md:block'
-          >
-            Sing-In
-          </Button>
+          <Link href='/sign_up'>
+            <Button className='notification-signUp-btn hidden  md:block'>
+              Sing-Up
+            </Button>
+          </Link>
+          <Link href='/sign_in'>
+            <Button
+              variant={"outline"}
+              className='notification-signUp-btn hidden md:block'
+            >
+              Sing-In
+            </Button>
+          </Link>
         </div>
       </nav>
     </div>
