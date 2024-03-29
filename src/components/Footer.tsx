@@ -44,10 +44,10 @@ function Footer() {
           <div className='flex flex-col space-y-4'>
             <h2 className='font-semibold mb-4'>Categories</h2>
             <div className='flex flex-col space-y-2 text-sm text-muted-foreground gap-3'>
-              <Link href='/ctegories/messangers'>Messangers</Link>
-              <Link href='/ctegories/travel_luggage'>Travel & Luggage</Link>
-              <Link href='/ctegories/backpack'>Backpack</Link>
-              <Link href='/ctegories/laptop_bags'>Laptop Bags</Link>
+              <Link href='/categories/messangers'>Messangers</Link>
+              <Link href='/categories/travel_luggage'>Travel & Luggage</Link>
+              <Link href='/categories/backpacks'>Backpack</Link>
+              <Link href='/categories/laptop_bags'>Laptop Bags</Link>
             </div>
           </div>
           <div className='flex flex-col space-y-4'>
